@@ -62,7 +62,9 @@ public class ProxyHandler extends AbstractHttpHandler
         _DontProxyHeaders.put(HttpFields.__ProxyConnection, o);
         _DontProxyHeaders.put(HttpFields.__Connection, o);
         _DontProxyHeaders.put(HttpFields.__KeepAlive, o);
-        _DontProxyHeaders.put(HttpFields.__TransferEncoding, o);
+        // Simple removal of Transfer-Encoding (chunking) without buffering
+        // and Content-Length adjustement will not work
+        //_DontProxyHeaders.put(HttpFields.__TransferEncoding, o);
         _DontProxyHeaders.put(HttpFields.__TE, o);
         _DontProxyHeaders.put(HttpFields.__Trailer, o);
         _DontProxyHeaders.put(HttpFields.__Upgrade, o);
